@@ -6,6 +6,8 @@ Status](https://travis-ci.org/lau/tzdata.svg?branch=master)](https://travis-ci.o
 [![Hex.pm version](https://img.shields.io/hexpm/v/tzdata.svg)](http://hex.pm/packages/tzdata)
 [![Hex.pm downloads](https://img.shields.io/hexpm/dt/tzdata.svg)](https://hex.pm/packages/tzdata)
 
+> This is an upstream fork of TZData that uses tesla/mint instead of hackney, to create smaller builds
+
 Tzdata. The [timezone database](https://www.iana.org/time-zones) in Elixir.
 
 Extracted from the [Calendar](https://github.com/lau/calendar) library.
