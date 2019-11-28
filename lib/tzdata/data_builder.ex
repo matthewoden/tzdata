@@ -45,8 +45,8 @@ defmodule Tzdata.DataBuilder do
 
     map.zone_list
     |> Enum.each(fn zone_name ->
-         insert_periods_for_zone(table, map, zone_name)
-       end)
+      insert_periods_for_zone(table, map, zone_name)
+    end)
 
     # remove temporary tzdata dir
     File.rm_rf(tzdata_dir)
@@ -65,7 +65,7 @@ defmodule Tzdata.DataBuilder do
   defp leap_sec_data(tzdata_dir), do: LeapSecParser.read_file(tzdata_dir)
 
   def ets_file_name_for_release_version(release_version) do
-    "#{release_dir()}/#{release_version}.v#{Tzdata.EtsHolder.file_version}.ets"
+    "#{release_dir()}/#{release_version}.v#{Tzdata.EtsHolder.file_version()}.ets"
   end
 
   def ets_table_name_for_release_version(release_version) do
@@ -79,10 +79,11 @@ defmodule Tzdata.DataBuilder do
     tuple_periods =
       periods
       |> Enum.map(fn period ->
-           period_to_tuple(key, period)
-         end)
+        period_to_tuple(key, period)
+      end)
 
-    tuple_periods |> Enum.each(fn tuple_period ->
+    tuple_periods
+    |> Enum.each(fn tuple_period ->
       :ets.insert(table, tuple_period)
     end)
   end

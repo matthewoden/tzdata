@@ -26,12 +26,14 @@ defmodule Tzdata.Mixfile do
     ]
   end
 
-  defp applications(:dev), do: [:hackney]
   defp applications(_), do: []
 
   defp deps do
     [
-      {:hackney, "~> 1.0"},
+      {:tesla, "~> 1.3.0"},
+      {:castore, "~> 0.1.0", optional: true},
+      {:mint, "~> 1.0", override: true, optional: true},
+      {:hackney, "~> 1.0", optional: true},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false}
     ]
   end
@@ -48,7 +50,7 @@ defmodule Tzdata.Mixfile do
     [
       autoupdate: :enabled,
       data_dir: nil,
-      http_client: Tzdata.HTTPClient.Hackney
+      http_client: Tzdata.HTTPClient.Tesla
     ]
   end
 
